@@ -7,8 +7,10 @@
         <h1>Welcome</h1>
         <?php 
             echo 'Chatbot';
-            $test_python = exec('test.py');
-            echo '$test_python';
+            echo '<br>';
+            $test_python = exec('python test.py');
+            echo $test_python;
+            echo '<br>';
         ?>
     </body>
 </html>

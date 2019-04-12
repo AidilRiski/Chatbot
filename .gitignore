@@ -1,0 +1,5 @@
+.vscode
+.exe
+.o
+.DS_Store
+__pycache__

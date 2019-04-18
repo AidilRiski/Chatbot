@@ -1,6 +1,12 @@
+import enum as enum
 import re as regex
 import csv as csv
 import os as os
+
+class SolveMethod(enum.Enum):
+    KMP = 0
+    BoyerMoore = 1
+    Regex = 2
 
 #Input: Sebuah string _pattern yang akan dicari pada sebuah string _stringToCheck.
 #Output: Persentasi kemiripan maksimal. (Jumlah karakter yang sama berurutan dibagi panjang _stringToCheck).
@@ -54,6 +60,16 @@ def joinStringCSV(csvReader):
         count += 1
     return returnValue
 
+def findSuitable(_pattern, _csvData, _solveMethod):
+    returnValue = []
+    if (_solveMethod == SolveMethod.Regex):
+        for data in _csvData:
+            similarityVal = stringMatchRegex(_pattern, data[0])
+            if (similarityVal >= 0.9):
+                returnValue.append(data)
+        
+    return returnValue
+
 def main():
     currentDir = os.path.dirname(os.path.realpath(__file__))
     os.chdir(currentDir)
@@ -66,7 +82,20 @@ def main():
     os.chdir('src/')
 
     userInput = input()
-    print(stringMatchRegex(userInput, faqIndonesia[0][0]))
+    results = findSuitable(userInput, faqIndonesia, SolveMethod.Regex)
 
+    if (len(results) == 1):
+        print(results[0][1])
+    elif (len(results) > 1):
+        print('Ditemukan beberapa pertanyaan yang sesuai: ')
+        count = 1
+        for result in results:
+            print('[' + count + '] ' + result[0][0])
+
+        print('Pilih pertanyaan yang sesuai!')
+        userInput = input()
+
+        print(result[int(userInput) - 1][1])
     return
+
 main()

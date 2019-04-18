@@ -74,11 +74,16 @@ def main():
     currentDir = os.path.dirname(os.path.realpath(__file__))
     os.chdir(currentDir)
     os.chdir('..')
+
     faqIndonesia = []
-    with open('data/faqIndonesia.txt', 'r') as csvFile:
-        reader = csv.reader(csvFile)
-        for row in reader:
-            faqIndonesia.append(row)
+    csvFile =  open('data/faqIndonesia.txt', 'r')
+    reader = csv.reader(csvFile)
+    for row in reader:
+        faqIndonesia.append(row)
+
+    txtFile = open('data/stopwords.txt', 'r')
+    txtFile = txtFile.read().splitlines()
+
     os.chdir('src/')
 
     userInput = input()

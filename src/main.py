@@ -38,8 +38,8 @@ def stringMatchRegex(_pattern, _stringToCheck):
         return 0
     
     sameChars = 0
-    for character in _stringToCheck:
-        if character in realPattern:
+    for character in realPattern:
+        if character in _stringToCheck:
             sameChars += 1
     
     return sameChars / len(_stringToCheck)
@@ -66,7 +66,7 @@ def main():
     os.chdir('src/')
 
     userInput = input()
-    print(stringMatchRegex(userInput, joinStringCSV(faqIndonesia)))
+    print(stringMatchRegex(userInput, faqIndonesia[0][0]))
 
     return
 main()

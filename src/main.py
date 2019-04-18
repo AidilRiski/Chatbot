@@ -26,29 +26,30 @@ def stringMatchBoyerMoore(_pattern, _stringToCheck):
 #Output: Persentasi kemiripan maksimal. (Jumlah karakter yang sama berurutan dibagi panjang _stringToCheck).
 #Memakai Regular Expression
 def stringMatchRegex(_pattern, _stringToCheck):
-    realPattern = _pattern
+    realPattern = _pattern.lower()
+    _stringToCheckClean = _stringToCheck.lower()
 
     temp = _pattern.split()
     _pattern = ''
 
     count = 0
     for elmt in temp:
-        _pattern += elmt
+        _pattern += elmt.lower()
         if (count < len(temp) - 1):
             _pattern += ' '
             _pattern += '[\w\s]{0,20}?'
         count += 1
     
-    matchRegex = regex.match(_pattern, _stringToCheck)
+    matchRegex = regex.match(_pattern, _stringToCheckClean)
     if matchRegex is None:
         return 0
     
     sameChars = 0
     for character in realPattern:
-        if character in _stringToCheck:
+        if character in _stringToCheckClean:
             sameChars += 1
     
-    return sameChars / len(_stringToCheck)
+    return sameChars / len(_stringToCheckClean)
 
 def joinStringCSV(csvReader):
     returnValue = ''
@@ -70,6 +71,27 @@ def findSuitable(_pattern, _csvData, _solveMethod):
         
     return returnValue
 
+def sanitizeStopWords(_string, _stopwordsList):
+    _string = _string.split()
+    _tempString = []
+
+    for word in _string:
+        _tempString.append(word)
+
+    for word in _tempString:
+        if word.lower() in _stopwordsList:
+            _string.remove(word)
+
+    returnValue = ''
+    count = 0
+    for word in _string:
+        returnValue += word
+        if count < len(_string) - 1:
+            returnValue += ' '
+        count += 1
+
+    return returnValue
+
 def main():
     currentDir = os.path.dirname(os.path.realpath(__file__))
     os.chdir(currentDir)
@@ -87,6 +109,7 @@ def main():
     os.chdir('src/')
 
     userInput = input()
+    userInput = sanitizeStopWords(userInput, txtFile)
     results = findSuitable(userInput, faqIndonesia, SolveMethod.Regex)
 
     if (len(results) == 1):
@@ -95,12 +118,13 @@ def main():
         print('Ditemukan beberapa pertanyaan yang sesuai: ')
         count = 1
         for result in results:
-            print('[' + count + '] ' + result[0][0])
+            print('[' + str(count) + '] ' + result[0])
+            count += 1
 
         print('Pilih pertanyaan yang sesuai!')
         userInput = input()
 
-        print(result[int(userInput) - 1][1])
+        print(results[int(userInput) - 1][1])
     return
 
 main()

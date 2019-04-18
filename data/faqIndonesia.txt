@@ -1,2 +1,4 @@
 Siapa nama,Aidil
 Dimana,Indonesia
+Dimana,Jerman
+Dimana,Jepang

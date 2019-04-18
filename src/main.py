@@ -2,6 +2,7 @@ import enum as enum
 import re as regex
 import csv as csv
 import os as os
+import sys as sys
 
 class SolveMethod(enum.Enum):
     KMP = 0
@@ -106,10 +107,22 @@ def main():
     txtFile = open('data/stopwords.txt', 'r')
     txtFile = txtFile.read().splitlines()
 
-    
+    argCount = 0
+    argVector = []
+    userInput = ''
+    for arg in sys.argv:
+        if argCount > 0:
+            argVector.append(arg)
+        argCount += 1
 
-    userInput = input()
+    for elmt in argVector:
+        argCount -= 1
+        userInput += elmt
+        if argCount > 0:
+            userInput += ' '
+    
     userInput = sanitizeStopWords(userInput, txtFile)
+    print(userInput)
     results = findSuitable(userInput, faqIndonesia, SolveMethod.Regex)
 
     fileWriter = open('data/result.txt', 'w+')

@@ -27,7 +27,7 @@ def stringMatchBoyerMoore(_pattern, _stringToCheck):
 #Memakai Regular Expression
 def stringMatchRegex(_pattern, _stringToCheck):
     realPattern = _pattern.lower()
-    _stringToCheckClean = _stringToCheck.lower()
+    stringToCheckClean = _stringToCheck.lower()
 
     temp = _pattern.split()
     _pattern = ''
@@ -40,16 +40,16 @@ def stringMatchRegex(_pattern, _stringToCheck):
             _pattern += '[\w\s]{0,20}?'
         count += 1
     
-    matchRegex = regex.match(_pattern, _stringToCheckClean)
+    matchRegex = regex.match(_pattern, stringToCheckClean)
     if matchRegex is None:
         return 0
     
     sameChars = 0
     for character in realPattern:
-        if character in _stringToCheckClean:
+        if character in stringToCheckClean:
             sameChars += 1
     
-    return sameChars / len(_stringToCheckClean)
+    return sameChars / len(stringToCheckClean)
 
 def joinStringCSV(csvReader):
     returnValue = ''
@@ -106,11 +106,16 @@ def main():
     txtFile = open('data/stopwords.txt', 'r')
     txtFile = txtFile.read().splitlines()
 
-    os.chdir('src/')
+    
 
     userInput = input()
     userInput = sanitizeStopWords(userInput, txtFile)
     results = findSuitable(userInput, faqIndonesia, SolveMethod.Regex)
+
+    fileWriter = open('data/result.txt', 'w+')
+
+    for result in results:
+        fileWriter.write(result[0] + ',' + result[1] + '\n')
 
     if (len(results) == 1):
         print(results[0][1])
@@ -125,6 +130,8 @@ def main():
         userInput = input()
 
         print(results[int(userInput) - 1][1])
+
+    os.chdir('src/')
     return
 
 main()

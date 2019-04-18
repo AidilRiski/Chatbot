@@ -13,8 +13,8 @@
             echo 'Chatbot';
             echo '<br>';
             if (isset($_GET['query'])){
-                $run_command = 'python src/main.py '.$_GET['query'];
-                echo exec($run_command);
+                $run_command = 'python3 src/main.py '.$_GET['query'].' 2>&1';
+                exec($run_command);
 
                 $result_file = fopen('./data/result.txt', 'r');
                 $result_questions_array = array();

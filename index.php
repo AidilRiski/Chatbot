@@ -5,7 +5,7 @@
     </head>
     <body>
         <h1>Welcome</h1>
-        <form action="/index.php" method="get">
+        <form action="index.php" method="get">
             <input type="text" name="query"><br>
             <input type="submit" value="Ask!"><br>
         </form>
@@ -26,7 +26,7 @@
                     array_push($result_answers_array, explode(',', $currentLine)[1]);
                 }
 
-                $count = 0
+                $count = 0;
                 foreach ($result_questions_array as $question){
                     echo $question.'<br>';
                     echo $result_answers_array[$count].'<br>';

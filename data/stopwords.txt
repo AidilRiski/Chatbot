@@ -1,4 +1,3 @@
-
 ada
 adanya
 adalah
@@ -197,7 +196,8 @@ terlebih
 bermacam
 macam
 semacam
-maka	makanya
+maka
+makanya
 makin
 malah
 malahan
@@ -296,7 +296,8 @@ seluruh
 seluruhnya
 semakin
 sementara
-sempat	semua
+sempat
+semua
 semuanya
 sendiri
 sendirinya
@@ -353,3 +354,5 @@ wong
 yaitu
 yakni
 yang
+?
+!

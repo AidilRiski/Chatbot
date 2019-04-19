@@ -74,6 +74,28 @@ def findSuitable(_pattern, _csvData, _solveMethod):
 
 def sanitizeStopWords(_string, _stopwordsList):
     _string = _string.split()
+    returnValue = ''
+
+    for word in _string:
+        wordTemp = list(word)
+
+        word = ''
+        for char in wordTemp:
+            if char is not '!' and char is not '?':
+                word += char
+
+        if word not in _stopwordsList:
+            returnValue += word
+    
+    returnValueTemp = list(returnValue)
+    returnValueTemp.pop()
+    
+    returnValue = ''
+    for char in returnValueTemp:
+        returnValue += char
+
+    '''
+    _string = _string.split()
     _tempString = []
 
     for word in _string:
@@ -90,6 +112,7 @@ def sanitizeStopWords(_string, _stopwordsList):
         if count < len(_string) - 1:
             returnValue += ' '
         count += 1
+    '''
 
     return returnValue
 

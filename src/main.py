@@ -22,7 +22,50 @@ class SolveMethod(enum.Enum):
 #Output: Persentasi kemiripan maksimal. (Jumlah karakter yang sama berurutan dibagi panjang _stringToCheck).
 #Memakai metode KMP
 def stringMatchKMP(_pattern, _stringToCheck):
+    realPattern = _pattern.lower()
+    stringToCheckClean = _stringToCheck.lower()
+
+    txtLen = len(stringToCheckClean)
+    patLen = len(realPattern) #pat stands for pattern
+    
+    #preprocessing string 'realPattern'   
+    longPS = [0]*patLen #array containing length of proper prefix and suffix
+    i = 1
+    lenSub = 0 #length of a substring that is both prefix and suffix
+    found = False
+
+    while (i < patLen):
+        if (realPattern[i] == realPattern[lenSub]):
+            lenSub += 1
+            longPS[i] = lenSub
+            i += 1
+        else:
+            if (lenSub == 0):
+                longPS[i] = 0
+                i += 1
+            else:
+                lenSub = longPS[lenSub-1]
+
+    i = 0
+    j = 0 
+    while (j < txtLen):
+        if (stringToCheckClean[j] == realPattern[i]):
+            i += 1
+            j += 1
+        
+        if (i == patLen):
+            found = True
+            i = longPS[i-1]
+        elif j < txtLen and realPattern[i] != stringToCheckClean[j]:
+            if i != 0:
+                i = longPS[i-1]
+            else:
+                i += 1
+
     similarityPercentage = 0
+    if (found):
+        similarityPercentage = patLen / txtLen
+        
     return similarityPercentage
 
 #Input: Sebuah string _pattern yang akan dicari pada sebuah string _stringToCheck.

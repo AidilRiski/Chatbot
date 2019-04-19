@@ -86,6 +86,7 @@ def sanitizeStopWords(_string, _stopwordsList):
 
         if word not in _stopwordsList:
             returnValue += word
+            returnValue += ' '
     
     returnValueTemp = list(returnValue)
     returnValueTemp.pop()

@@ -8,5 +8,5 @@ dimaksud Daerah Pabean,Daerah Pabean adalah wilayah Republik Indonesia yang meli
 dimaksud Kawasan Pabean,Kawasan Pabean adalah kawasan dengan batas-batas tertentu di pelabuhan laut, bandar udara atau tempat lain yang ditetapkan untuk lalu-lintas barang yang sepenuhnya berada di bawah pengawasan Direktorat Jenderal Bea dan Cukai
 dimaksud Cukai,Cukai adalah pungutan negara yang dikenakan terhadap barang kena cukai
 dimaksud Barang Kena Cukai,Barang kena cukai adalah barang-barang tertentu yang mempunyai sifat atau karakteristik yang ditetapkan dalam Undang-Undang Cukai
-Barang Kena Cukai,Menurut Undang-Undang Nomor 39 Tahun  2007,  BKC terdiri dari : etil alkohol (EA) atau etanol, minuman yang mengandung etil alkohol (MMEA), hasil tembakau
+Barang Kena Cukai,Menurut Undang-Undang Nomor 39 Tahun  2007 BKC terdiri dari:<br>-etil alkohol (EA) atau etanol<br>-minuman yang mengandung etil alkohol (MMEA)<br>-hasil tembakau
 dimaksud PNBP,PNBP singkatan dari Penerimaan Negara Bukan Pajak, yaitu seluruh penerimaan Pemerintah Pusat yang tidak berasal dari penerimaan perpajakan

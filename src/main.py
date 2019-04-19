@@ -3,6 +3,15 @@ import re as regex
 import csv as csv
 import os as os
 import sys as sys
+import itertools as itool
+
+currentDir = os.path.dirname(os.path.realpath(__file__))
+os.chdir(currentDir)
+os.chdir('..')
+
+sys.path.append('src/tesaurus-master')
+
+import tesaurus as tes
 
 class SolveMethod(enum.Enum):
     KMP = 0
@@ -62,13 +71,55 @@ def joinStringCSV(csvReader):
         count += 1
     return returnValue
 
+def normalizeTuple(_tuple):
+    returnValue = ''
+    for elmt in _tuple:
+        if type(elmt) == tuple:
+            returnValue += normalizeTuple(elmt)
+        else:
+            returnValue += ' ' + elmt
+
+    return returnValue
+
+def cleanString(_string):
+    tempList = []
+    tempList = _string.split()
+
+    count = 0
+    returnValue = ''
+    for elmt in tempList:
+        returnValue += elmt
+        if count < len(tempList) - 1:
+            returnValue += ' '
+        count += 1
+
+    return returnValue
+
 def findSuitable(_pattern, _csvData, _solveMethod):
     returnValue = []
+    patternSynonyms = []
+    patternExplode = _pattern.split()
+    for word in patternExplode:
+        sinonimList = tes.getSinonim(word)
+        sinonimList.append(word)
+        patternSynonyms.append(sinonimList)
+    
+    patternStringList = ['']
+    for listElmt in patternSynonyms:
+        patternStringList = itool.product(patternStringList, listElmt)
+
+    patternStringSynonims = []
+    for tupleElmt in patternStringList:
+        patternStringSynonims.append(cleanString(normalizeTuple(tupleElmt)))
+    
+    print(patternStringSynonims)
+
     if (_solveMethod == SolveMethod.Regex):
         for data in _csvData:
-            similarityVal = stringMatchRegex(_pattern, data[0])
-            if (similarityVal >= 0.9):
-                returnValue.append(data)
+            for querySynonym in patternStringSynonims:
+                similarityVal = stringMatchRegex(querySynonym, data[0])
+                if (similarityVal >= 0.9):
+                    returnValue.append(data)
         
     return returnValue
 
@@ -84,7 +135,7 @@ def sanitizeStopWords(_string, _stopwordsList):
             if char is not '!' and char is not '?':
                 word += char
 
-        if word not in _stopwordsList:
+        if word.lower() not in _stopwordsList:
             returnValue += word
             returnValue += ' '
     
@@ -146,7 +197,6 @@ def main():
             userInput += ' '
     
     userInput = sanitizeStopWords(userInput, txtFile)
-    print(userInput)
     results = findSuitable(userInput, faqIndonesia, SolveMethod.Regex)
 
     fileWriter = open('data/result.txt', 'w+')

@@ -108,8 +108,9 @@ def stringMatchBoyerMoore(_pattern, _stringToCheck):
             if (i > n-1) :
                 break
          # no match
-    similarityPercentage = max*100/n;
+    similarityPercentage = max*100/n
     return similarityPercentage
+
 def buildLast(pattern):
         #Return array storing index of last
         #occurrence of each ASCII char in pattern.
@@ -206,6 +207,18 @@ def findSuitable(_pattern, _csvData, _solveMethod):
                 similarityVal = stringMatchRegex(querySynonym, data[0])
                 if (similarityVal >= 0.9):
                     returnValue.append(data)
+    elif (_solveMethod == SolveMethod.KMP):
+        for data in _csvData:
+            for querySynonym in patternStringSynonims:
+                similarityVal = stringMatchKMP(querySynonym, data[0])
+                if (similarityVal >= 0.9):
+                    returnValue.append(data)
+    elif (_solveMethod == SolveMethod.BoyerMoore):
+        for data in _csvData:
+            for querySynonym in patternStringSynonims:
+                similarityVal = stringMatchBoyerMoore(querySynonym, data[0])
+                if (similarityVal >= 0.9):
+                    returnValue.append(data)
         
     return returnValue
 
@@ -271,10 +284,21 @@ def main():
     argCount = 0
     argVector = []
     userInput = ''
+    solveMethodStr = ''
     for arg in sys.argv:
-        if argCount > 0:
+        if argCount == 1:
+            solveMethodStr = arg
+        if argCount > 1:
             argVector.append(arg)
         argCount += 1
+
+    solveMethod = None
+    if solveMethodStr == 'kmp':
+        solveMethod = SolveMethod.KMP
+    elif solveMethodStr == 'boy':
+        solveMethod = SolveMethod.BoyerMoore
+    elif solveMethodStr == 'reg':
+        solveMethod = SolveMethod.Regex
 
     for elmt in argVector:
         argCount -= 1
@@ -283,7 +307,7 @@ def main():
             userInput += ' '
     
     userInput = sanitizeStopWords(userInput, txtFile)
-    results = findSuitable(userInput, faqIndonesia, SolveMethod.Regex)
+    results = findSuitable(userInput, faqIndonesia, solveMethod)
 
     fileWriter = open('data/result.txt', 'w+')
 

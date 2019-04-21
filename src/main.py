@@ -80,20 +80,23 @@ def stringMatchBoyerMoore(_pattern, _stringToCheck):
     count=0
     max=0
     i = m-1
+    #print('Checking ' + _pattern + ' toward ' + _stringToCheck)
     if(i > n-1): #Pattern lebih panjang daripada text
         temp=stringMatchBoyerMoore(stringToCheckClean,realPattern)
-        if(temp>0):
-            return 100
+        if(temp>0.9):
+            #print('C ' + str(1))
+            return 1
         else:
+            #print('D ' + str(0))
             return 0
     else:
         j = m-1
         while True:
-            
             if (stringToCheckClean[j] == realPattern[i]):
                 count+=1
                 if (j == 0):
-                    return (count+1)*100/n; # match
+                    #print('A ' + str((count+1)/n))
+                    return (count+1)/n; # match
                 else: # looking-glass technique
                     i-=1
                     j-=1
@@ -102,18 +105,18 @@ def stringMatchBoyerMoore(_pattern, _stringToCheck):
                 i = i + m - min(j, 1+lo)
                 j = m-1  
                 if(count>max):
-                    
                     max=count
                 count=0
             if (i > n-1) :
                 break
-         # no match
-    similarityPercentage = max*100/n
+                # no match
+    similarityPercentage = max/n
+    #print('B ' + str(similarityPercentage))
     return similarityPercentage
 
 def buildLast(pattern):
-        #Return array storing index of last
-        #occurrence of each ASCII char in pattern.
+    #Return array storing index of last
+    #occurrence of each ASCII char in pattern.
     last = [-1]*128
     for i in range(0,len(pattern)):
         last[ord(pattern[i])]=i
@@ -205,22 +208,33 @@ def findSuitable(_pattern, _csvData, _solveMethod):
         for data in _csvData:
             for querySynonym in patternStringSynonims:
                 similarityVal = stringMatchRegex(querySynonym, data[0])
+                #print('Sim ' + str(similarityVal))
                 if (similarityVal >= 0.9):
+                    print('Found ' + querySynonym + ' ' + data[0])
                     returnValue.append(data)
     elif (_solveMethod == SolveMethod.KMP):
         for data in _csvData:
             for querySynonym in patternStringSynonims:
                 similarityVal = stringMatchKMP(querySynonym, data[0])
+                #print('Sim ' + str(similarityVal))
                 if (similarityVal >= 0.9):
+                    print('Found ' + querySynonym + ' ' + data[0])
                     returnValue.append(data)
     elif (_solveMethod == SolveMethod.BoyerMoore):
         for data in _csvData:
             for querySynonym in patternStringSynonims:
                 similarityVal = stringMatchBoyerMoore(querySynonym, data[0])
+                #print('Sim ' + str(similarityVal))
                 if (similarityVal >= 0.9):
+                    print('Found ' + querySynonym + ' ' + data[0])
                     returnValue.append(data)
-        
-    return returnValue
+    
+    realReturnValue = []
+    for sentence in returnValue:
+        if sentence not in realReturnValue:
+            realReturnValue.append(sentence)
+    
+    return realReturnValue
 
 def sanitizeStopWords(_string, _stopwordsList):
     _string = _string.split()
@@ -303,7 +317,7 @@ def main():
     for elmt in argVector:
         argCount -= 1
         userInput += elmt
-        if argCount > 0:
+        if argCount > 1:
             userInput += ' '
     
     userInput = sanitizeStopWords(userInput, txtFile)

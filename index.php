@@ -21,7 +21,7 @@
 
                 if (isset($_POST['query'])){
                     $run_command = 'python3 src/main.py reg'.$_POST['query'].' 2>&1';
-                    exec($run_command);
+                    echo exec($run_command).'<br>';
 
                     $result_file = fopen('./data/result.txt', 'r');
                     $result_questions_array = array();

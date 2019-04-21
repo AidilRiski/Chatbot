@@ -72,8 +72,51 @@ def stringMatchKMP(_pattern, _stringToCheck):
 #Output: Persentasi kemiripan maksimal. (Jumlah karakter yang sama berurutan dibagi panjang _stringToCheck).
 #Memakai metode Boyer-Moore
 def stringMatchBoyerMoore(_pattern, _stringToCheck):
-    similarityPercentage = 0
+    realPattern = _pattern.lower()
+    stringToCheckClean = _stringToCheck.lower()
+    last= buildLast(stringToCheckClean)
+    n = len(realPattern)
+    m = len(stringToCheckClean)
+    count=0
+    max=0
+    i = m-1
+    if(i > n-1): #Pattern lebih panjang daripada text
+        temp=stringMatchBoyerMoore(stringToCheckClean,realPattern)
+        if(temp>0):
+            return 100
+        else:
+            return 0
+    else:
+        j = m-1
+        while True:
+            
+            if (stringToCheckClean[j] == realPattern[i]):
+                count+=1
+                if (j == 0):
+                    return (count+1)*100/n; # match
+                else: # looking-glass technique
+                    i-=1
+                    j-=1
+            else : # character jump technique
+                lo = last[ord(realPattern[i])]
+                i = i + m - min(j, 1+lo)
+                j = m-1  
+                if(count>max):
+                    
+                    max=count
+                count=0
+            if (i > n-1) :
+                break
+         # no match
+    similarityPercentage = max*100/n;
     return similarityPercentage
+def buildLast(pattern):
+        #Return array storing index of last
+        #occurrence of each ASCII char in pattern.
+    last = [-1]*128
+    for i in range(0,len(pattern)):
+        last[ord(pattern[i])]=i
+    return last
 
 #Input: Sebuah string _pattern yang akan dicari pada sebuah string _stringToCheck.
 #Output: Persentasi kemiripan maksimal. (Jumlah karakter yang sama berurutan dibagi panjang _stringToCheck).

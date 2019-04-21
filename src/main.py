@@ -22,6 +22,7 @@ class SolveMethod(enum.Enum):
 #Output: Persentasi kemiripan maksimal. (Jumlah karakter yang sama berurutan dibagi panjang _stringToCheck).
 #Memakai metode KMP
 def stringMatchKMP(_pattern, _stringToCheck):
+    print('checking ' + _pattern + ' toward ' + _stringToCheck)
     realPattern = _pattern.lower()
     stringToCheckClean = _stringToCheck.lower()
 
@@ -49,6 +50,9 @@ def stringMatchKMP(_pattern, _stringToCheck):
     i = 0
     j = 0 
     while (j < txtLen):
+        print('checking ' + _pattern + ' toward ' + _stringToCheck)
+        print('i ' + str(i))
+        print('j ' + str(j))
         if (stringToCheckClean[j] == realPattern[i]):
             i += 1
             j += 1
@@ -216,7 +220,7 @@ def findSuitable(_pattern, _csvData, _solveMethod):
         for data in _csvData:
             for querySynonym in patternStringSynonims:
                 similarityVal = stringMatchKMP(querySynonym, data[0])
-                #print('Sim ' + str(similarityVal))
+                print('Sim ' + str(similarityVal))
                 if (similarityVal >= 0.9):
                     print('Found ' + querySynonym + ' ' + data[0])
                     returnValue.append(data)

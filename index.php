@@ -91,24 +91,26 @@
                 }
             ?>
         </div>
-        <form action="index.php" method="post">
-            <div id='queryArea'>
-                Question:
-                <input type="text" name="query" id='queryBox'><br>
-            </div>
-            <div id='submitArea'>
-                <input type="submit" value="Ask!"><br>
-            </div>
-            <div id='solveMethodArea'>
-                <input type="radio" name="solveMethod" value="kmp">KMP<br>
-                <input type="radio" name="solveMethod" value="boy">Boyer-Moore<br>
-                <input type="radio" name="solveMethod" value="reg">Regular Expression<br>
-            </div>
-            <?php
-                echo '<div id="hidden">
-                    <input type="hidden" name="conversationCache" value="'.$conversationCache.'"
-                </div>'
-            ?>
-        </form>
+        <div id="inputArea">
+            <form action="index.php" method="post">
+                <div id='queryArea'>
+                    Question:
+                    <input type="text" name="query" id='queryBox'><br>
+                </div>
+                <div id='submitArea'>
+                    <input type="submit" value="Ask!"><br>
+                </div>
+                <div id='solveMethodArea'>
+                    <input type="radio" name="solveMethod" value="kmp">KMP<br>
+                    <input type="radio" name="solveMethod" value="boy">Boyer-Moore<br>
+                    <input type="radio" name="solveMethod" value="reg">Regular Expression<br>
+                </div>
+                <?php
+                    echo '<div id="hidden">
+                        <input type="hidden" name="conversationCache" value="'.$conversationCache.'"
+                    </div>'
+                ?>
+            </form>
+        </div>
     </body>
 </html>

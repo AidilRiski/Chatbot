@@ -1,12 +1,32 @@
-nama pembuat,Aidil
+Nama pembuat,<ul><li>Aidil</li><li>Jeremy</li><li>Ivan</li></ul>
 Dimana Aidi,Indonesia
 Dimanaaa,Jerman
 Dimana Aidil,Jepang
-dimaksud Bea Masuk,Bea Masuk adalah pungutan negara yang dikenakan terhadap barang impor
-dimaksud impor,Impor adalah kegiatan memasukkan barang ke dalam Daerah Pabean
-dimaksud Daerah Pabean,Daerah Pabean adalah wilayah Republik Indonesia yang meliputi wilayah darat, perairan dan ruang udara di atasnya, serta tempat-tempat tertentu di Zona Ekonomi Ekslusif dan Landas Kontinen yang didalamnya berlaku Undang-Undang Kepabeanan
-dimaksud Kawasan Pabean,Kawasan Pabean adalah kawasan dengan batas-batas tertentu di pelabuhan laut, bandar udara atau tempat lain yang ditetapkan untuk lalu-lintas barang yang sepenuhnya berada di bawah pengawasan Direktorat Jenderal Bea dan Cukai
-dimaksud Cukai,Cukai adalah pungutan negara yang dikenakan terhadap barang kena cukai
-dimaksud Barang Kena Cukai,Barang kena cukai adalah barang-barang tertentu yang mempunyai sifat atau karakteristik yang ditetapkan dalam Undang-Undang Cukai
+Dimaksud Bea Masuk,Bea Masuk adalah pungutan negara yang dikenakan terhadap barang impor
+Dimaksud impor,Impor adalah kegiatan memasukkan barang ke dalam Daerah Pabean
+Dimaksud Daerah Pabean,Daerah Pabean adalah wilayah Republik Indonesia yang meliputi wilayah darat, perairan dan ruang udara di atasnya, serta tempat-tempat tertentu di Zona Ekonomi Ekslusif dan Landas Kontinen yang didalamnya berlaku Undang-Undang Kepabeanan
+Dimaksud Kawasan Pabean,Kawasan Pabean adalah kawasan dengan batas-batas tertentu di pelabuhan laut, bandar udara atau tempat lain yang ditetapkan untuk lalu-lintas barang yang sepenuhnya berada di bawah pengawasan Direktorat Jenderal Bea dan Cukai
+Dimaksud Cukai,Cukai adalah pungutan negara yang dikenakan terhadap barang kena cukai
+Dimaksud Barang Kena Cukai,Barang kena cukai adalah barang-barang tertentu yang mempunyai sifat atau karakteristik yang ditetapkan dalam Undang-Undang Cukai
 Barang Kena Cukai,Menurut Undang-Undang Nomor 39 Tahun  2007 BKC terdiri dari:<br>-etil alkohol (EA) atau etanol<br>-minuman yang mengandung etil alkohol (MMEA)<br>-hasil tembakau
-dimaksud PNBP,PNBP singkatan dari Penerimaan Negara Bukan Pajak, yaitu seluruh penerimaan Pemerintah Pusat yang tidak berasal dari penerimaan perpajakan
+Dimaksud PNBP,PNBP singkatan dari Penerimaan Negara Bukan Pajak, yaitu seluruh penerimaan Pemerintah Pusat yang tidak berasal dari penerimaan perpajakan
+Nama koordinator dosen mata kuliah strategi algoritma 2018/2019,Rinaldi Munir
+Nama koordas strategi algoritma,Kevin Andrian Liwinata
+Kumlah SKS minimal untuk lulus S1 di ITB,144 SKS
+Kepanjangan SKSD,Sistem Komunikasi Satelit Domestik
+Tanggal diadakan pemilu tahun,17 April 2019
+Kali diadakan pemilu presiden,4 Kali
+Pemilu diadakan kali setahun, 5 tahun sekali
+Pembuat,<ul><li>Aidil</li><li>Jeremy</li><li>Ivan</li></ul>
+Stack dipakai untuk membuat,Apa itu stack?
+Nama ibukota Indonesia,Jakarta
+Pembuat algoritma KMP,Knuth-Morris-Prat
+Pemain catur nomor satu dunia,Magnus Carlsen
+Nama blackhole berada di tengah galaksi bimasakti,Blackhole M87
+Nama pemain karakter wanita direbutkan kedua pria lagu "adu rayu",Velove Vexia
+Jumlah presiden Indonesia,Tujuh orang
+Tahun Indonesia merdeka,Tahun 1945
+Tahun Indonesia dijajah Jepang,3.5 tahun
+Dimana Soekarno memproklamasikan kemerdekaan Indonesia,Jl.Pegangsaan Timur Nomor 56
+Dimana kantin terdekat Labtek 5,Kantin Borju
+Dimana,di Jonggol!

@@ -192,7 +192,9 @@ def cleanString(_string):
 def findSuitable(_pattern, _csvData, _solveMethod):
     returnValue = []
     patternSynonyms = []
+    returnPercentage = []
     patternExplode = _pattern.split()
+    
     for word in patternExplode:
         sinonimList = tes.getSinonim(word)
         sinonimList.append(word)
@@ -205,8 +207,6 @@ def findSuitable(_pattern, _csvData, _solveMethod):
     patternStringSynonims = []
     for tupleElmt in patternStringList:
         patternStringSynonims.append(cleanString(normalizeTuple(tupleElmt)))
-    
-    print(patternStringSynonims)
 
     if (_solveMethod == SolveMethod.Regex):
         for data in _csvData:
@@ -216,6 +216,7 @@ def findSuitable(_pattern, _csvData, _solveMethod):
                 if (similarityVal >= 0.9):
                     print('Found ' + querySynonym + ' ' + data[0])
                     returnValue.append(data)
+                    returnPercentage.append(similarityVal)
     elif (_solveMethod == SolveMethod.KMP):
         for data in _csvData:
             for querySynonym in patternStringSynonims:
@@ -224,6 +225,7 @@ def findSuitable(_pattern, _csvData, _solveMethod):
                 if (similarityVal >= 0.9):
                     print('Found ' + querySynonym + ' ' + data[0])
                     returnValue.append(data)
+                    returnPercentage.append(similarityVal)
     elif (_solveMethod == SolveMethod.BoyerMoore):
         for data in _csvData:
             for querySynonym in patternStringSynonims:
@@ -232,13 +234,31 @@ def findSuitable(_pattern, _csvData, _solveMethod):
                 if (similarityVal >= 0.9):
                     print('Found ' + querySynonym + ' ' + data[0])
                     returnValue.append(data)
-    
+                    returnPercentage.append(similarityVal)
+
     realReturnValue = []
+    realReturnPercentage = []
+    counter = 0
     for sentence in returnValue:
         if sentence not in realReturnValue:
             realReturnValue.append(sentence)
+            realReturnPercentage.append(similarityVal[counter])
+        counter += 1
+
+    if (len(realReturnValue) > 3):
+        realestReturnValue = []
+        realestCount = 0
+        while realestCount < 3:
+            counter = 0
+            curMax = realReturnValue[counter]
+            counter += 1
+            while counter < len(realReturnValue):
+                counter += 1
+            realestReturnValue.append(realReturnValue[counter - 1])
+            realReturnValue.remove(realReturnValue[counter - 1])
+            realestCount += 1
     
-    return realReturnValue
+    return realestReturnValue
 
 def sanitizeStopWords(_string, _stopwordsList):
     _string = _string.split()

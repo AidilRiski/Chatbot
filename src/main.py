@@ -64,7 +64,7 @@ def stringMatchKMP(_pattern, _stringToCheck):
             if i != 0:
                 i = longPS[i-1]
             else:
-                i += 1
+                j += 1
 
     similarityPercentage = 0
     if (found):

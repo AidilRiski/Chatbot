@@ -1,21 +1,47 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    background-color: #720c21;
+}
+
+#inputForm{
+    width: 300px;
+    margin: 0 auto;
+}
+
+#queryArea{
+    align-content: space-around;
+}
+
+.button{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #b13646;
+    box-shadow: none;
+    border: none;
 }
 
 #titleBar{
-    background-color: red;
+    background-color: #510425;
     text-align: center;
 }
 
 #textArea{
-    margin-left: auto;
-    margin-right: auto;
-    background-color: pink;
-    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    background-color: #b13646;
+}
+
+#textBound{
+    margin: 0 auto;
 }
 
 #inputArea{
-    background-color: red;
-    text-align: left;
+    background-color: #510425;
+    margin: auto;
+    display: inline;
 }

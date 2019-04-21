@@ -92,13 +92,13 @@
             ?>
         </div>
         <div id="inputArea">
-            <form action="index.php" method="post">
+            <form id="inputForm" action="index.php" method="post">
                 <div id='queryArea'>
                     Question:
-                    <input type="text" name="query" id='queryBox'><br>
+                    <input type="text" name="query" id="queryBox"><br>
                 </div>
-                <div id='submitArea'>
-                    <input type="submit" value="Ask!"><br>
+                <div id="submitArea">
+                    <input type="submit" value="Ask!" class="button"><br>
                 </div>
                 <div id='solveMethodArea'>
                     <input type="radio" name="solveMethod" value="kmp">KMP<br>

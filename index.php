@@ -93,12 +93,16 @@
         </div>
         <div id="inputArea">
             <form id="inputForm" action="index.php" method="post">
-                <div id='queryArea'>
-                    Question:
-                    <input type="text" name="query" id="queryBox"><br>
+                <div id="queryArea">
+                    <div id="questionLabel">
+                        Question:
+                    </div>
+                    <div id="queryDiv">
+                        <input type="text" name="query" id="queryBox"><br>
+                    </div>
                 </div>
                 <div id="submitArea">
-                    <input type="submit" value="Ask!" class="button"><br>
+                    <input type="submit" value="Ask!" class="myButton"><br>
                 </div>
                 <div id='solveMethodArea'>
                     <input type="radio" name="solveMethod" value="kmp">KMP<br>

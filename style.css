@@ -4,20 +4,31 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.lightText{
+    color: white;
+}
+
 body{
     background-color: #720c21;
 }
 
-#inputForm{
-    width: 300px;
-    margin: 0 auto;
-}
-
 #queryArea{
-    align-content: space-around;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.button{
+#queryBox{
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: pink;
+}
+
+.myButton{
     width: 100%;
     margin: 0 auto;
     background-color: #b13646;
@@ -25,7 +36,12 @@ body{
     border: none;
 }
 
+ul, ol{
+    list-style-position: inside;
+}
+
 #titleBar{
+    color: white;
     background-color: #510425;
     text-align: center;
 }
@@ -33,15 +49,19 @@ body{
 #textArea{
     width: 300px;
     margin: 0 auto;
+    padding: 5px;
+    box-sizing: border-box;
     background-color: #b13646;
 }
 
-#textBound{
-    margin: 0 auto;
+#inputArea{
+    width: 300px;
+    margin: auto;
+    box-sizing: border-box;
+    background-color: #b13646;
 }
 
-#inputArea{
+#solveMethodArea{
+    color: white;
     background-color: #510425;
-    margin: auto;
-    display: inline;
 }

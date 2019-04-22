@@ -242,7 +242,7 @@ def findSuitable(_pattern, _csvData, _solveMethod):
     for sentence in returnValue:
         if sentence not in realReturnValue:
             realReturnValue.append(sentence)
-            realReturnPercentage.append(similarityVal[counter])
+            realReturnPercentage.append(returnPercentage[counter])
         counter += 1
 
     if (len(realReturnValue) > 3):
@@ -257,8 +257,9 @@ def findSuitable(_pattern, _csvData, _solveMethod):
             realestReturnValue.append(realReturnValue[counter - 1])
             realReturnValue.remove(realReturnValue[counter - 1])
             realestCount += 1
+        return realestReturnValue
     
-    return realestReturnValue
+    return realReturnValue
 
 def sanitizeStopWords(_string, _stopwordsList):
     _string = _string.split()

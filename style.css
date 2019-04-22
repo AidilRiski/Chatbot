@@ -12,6 +12,12 @@ body{
     background-color: #720c21;
 }
 
+#bottyArea{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
 #queryArea{
     padding: 5px;
     box-sizing: border-box;
@@ -31,9 +37,19 @@ body{
 .myButton{
     width: 100%;
     margin: 0 auto;
-    background-color: #b13646;
+    background-color: #ff9ba9;
     box-shadow: none;
     border: none;
+    font-size: 20px;
+}
+
+.myButton:hover{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #b66570;
+    box-shadow: none;
+    border: none;
+    font-size: 20px;
 }
 
 ul, ol{
@@ -64,4 +80,29 @@ ul, ol{
 #solveMethodArea{
     color: white;
     background-color: #510425;
+}
+
+#solveMethodArea ul{
+    list-style: none;
+}
+
+#solveMethodArea div{
+    width: 100%;
+}
+
+.radioButton{
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    display: block;
+}
+
+.radioChoice{
+    background-color: #a76a72;
+    cursor: pointer;
+}
+
+.radioButton:checked + .radioChoice{
+    color: #000;
+    background-color: #ff9ba9;
 }

@@ -8,6 +8,9 @@
         <div id="titleBar">
             <h1>Welcome to Botty!</h1>
         </div>
+        <div id="bottyArea">
+            <img src="image/Botty.png">
+        </div>
         <div id="textArea">
             <?php
                 $conversationCache = '';
@@ -105,9 +108,17 @@
                     <input type="submit" value="Ask!" class="myButton"><br>
                 </div>
                 <div id='solveMethodArea'>
-                    <input type="radio" name="solveMethod" value="kmp">KMP<br>
-                    <input type="radio" name="solveMethod" value="boy">Boyer-Moore<br>
-                    <input type="radio" name="solveMethod" value="reg">Regular Expression<br>
+                    <ul>
+                        <li>
+                            <label><input type="radio" name="solveMethod" value="kmp" class="radioButton"><div class="radioChoice">KMP</div></label>
+                        </li>
+                        <li>
+                            <label><input type="radio" name="solveMethod" value="boy" class="radioButton"><div class="radioChoice">Boyer-Moore</div></label>
+                        </li>
+                        <li>
+                            <label><input type="radio" name="solveMethod" value="reg" class="radioButton"><div class="radioChoice">Regular Expression</div></label>
+                        </li>
+                    </ul>
                 </div>
                 <?php
                     echo '<div id="hidden">

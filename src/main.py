@@ -190,6 +190,8 @@ def cleanString(_string):
     return returnValue
 
 def findSuitable(_pattern, _csvData, _solveMethod):
+    reserveRetVals = []
+    reservePercVals = []
     returnValue = []
     patternSynonyms = []
     returnPercentage = []
@@ -212,6 +214,8 @@ def findSuitable(_pattern, _csvData, _solveMethod):
         for data in _csvData:
             for querySynonym in patternStringSynonims:
                 similarityVal = stringMatchRegex(querySynonym, data[0])
+                reserveRetVals.append(data)
+                reservePercVals.append(similarityVal)
                 #print('Sim ' + str(similarityVal))
                 if (similarityVal >= 0.9):
                     print('Found ' + querySynonym + ' ' + data[0])
@@ -221,7 +225,9 @@ def findSuitable(_pattern, _csvData, _solveMethod):
         for data in _csvData:
             for querySynonym in patternStringSynonims:
                 similarityVal = stringMatchKMP(querySynonym, data[0])
-                print('Sim ' + str(similarityVal))
+                #print('Sim ' + str(similarityVal))
+                reserveRetVals.append(data)
+                reservePercVals.append(similarityVal)
                 if (similarityVal >= 0.9):
                     print('Found ' + querySynonym + ' ' + data[0])
                     returnValue.append(data)
@@ -231,10 +237,59 @@ def findSuitable(_pattern, _csvData, _solveMethod):
             for querySynonym in patternStringSynonims:
                 similarityVal = stringMatchBoyerMoore(querySynonym, data[0])
                 #print('Sim ' + str(similarityVal))
+                reserveRetVals.append(data)
+                reservePercVals.append(similarityVal)
                 if (similarityVal >= 0.9):
                     print('Found ' + querySynonym + ' ' + data[0])
                     returnValue.append(data)
                     returnPercentage.append(similarityVal)
+
+    if (len(returnValue) == 0):
+        #Not found
+        topThree = []
+        maxPercentage = -1
+        topIdx = -1
+        countTop = 0
+
+        while countTop < len(topThree):
+            if (reservePercVals[countTop] > maxPercentage):
+                maxPercentage = reservePercVals[countTop]
+                topIdx = countTop
+            countTop += 1
+
+        topThree.append(reserveRetVals[topIdx])
+        reserveRetVals.remove(reserveRetVals[topIdx])
+        reservePercVals.remove(reservePercVals[topIdx])
+
+        maxPercentage = -1
+        topIdx = -1
+        countTop = 0
+
+        while countTop < len(topThree):
+            if (reservePercVals[countTop] > maxPercentage):
+                maxPercentage = reservePercVals[countTop]
+                topIdx = countTop
+            countTop += 1
+
+        topThree.append(reserveRetVals[topIdx])
+        reserveRetVals.remove(reserveRetVals[topIdx])
+        reservePercVals.remove(reservePercVals[topIdx])
+
+        maxPercentage = -1
+        topIdx = -1
+        countTop = 0
+
+        while countTop < len(topThree):
+            if (reservePercVals[countTop] > maxPercentage):
+                maxPercentage = reservePercVals[countTop]
+                topIdx = countTop
+            countTop += 1
+
+        topThree.append(reserveRetVals[topIdx])
+        reserveRetVals.remove(reserveRetVals[topIdx])
+        reservePercVals.remove(reservePercVals[topIdx])
+
+        return topThree
 
     realReturnValue = []
     realReturnPercentage = []

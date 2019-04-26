@@ -5,8 +5,8 @@ def main():
     os.chdir(currentDir)
     os.chdir('..')
 
-    #stopwordsList = open('data/stopwords.txt', 'r')
-    stopwordsList = open('data\stopwords.txt', 'r')
+    stopwordsList = open('data/stopwords.txt', 'r')
+    #stopwordsList = open('data\stopwords.txt', 'r')
     stopwordsList = stopwordsList.read().splitlines()
 
     userInput = input()
